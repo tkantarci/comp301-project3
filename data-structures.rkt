@@ -68,8 +68,8 @@
 (define expval->stack
   (lambda (v)
 	(cases expval v
-  	(list-val (lst) lst)
-  	(else (expval-extractor-error 'num v)))))
+          (stack-val (lst) lst)
+          (else (expval-extractor-error 'num v)))))
 
 ;;-----------------------------------
 
