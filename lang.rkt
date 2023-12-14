@@ -66,7 +66,7 @@
       stack-peek-exp)
 
      (expression
-      ("stack-push-multi" "(" expression "," (arbno expression) ")")
+      ("stack-push-multi" "(" expression (arbno "," expression) ")")
       stack-push-multi-exp)
 
      (expression
