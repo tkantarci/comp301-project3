@@ -59,7 +59,7 @@
 
     (expression
      ("stack-pop" "(" expression ")")
-     stack-pop-exp
+     stack-pop-exp)
 
      (expression
       ("stack-peek" "(" expression ")")
