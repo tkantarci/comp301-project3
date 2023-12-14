@@ -49,7 +49,33 @@
     ;;---------------------------------------------------------
     ; INSERT YOUR CODE HERE
     ; Add the syntax for the new expressions here below:
+    (expression
+     ("empty-stack" "()")
+     stack-exp)
 
+    (expression
+     ("stack-push" "(" expression "," expression ")")
+     stack-push-exp)
+
+    (expression
+     ("stack-pop" "(" expression ")")
+     stack-pop-exp
+
+     (expression
+      ("stack-peek" "(" expression ")")
+      stack-peek-exp)
+
+     (expression
+      ("stack-push-multi" "(" expression "," (arbno expression) ")")
+      stack-push-multi-exp)
+
+     (expression
+      ("stack-pop-multi" "(" expression "," expression ")")
+      stack-pop-multi-exp)
+
+     (expression
+      ("stack-merge" "(" expression "," expression ")")
+      stack-merge-exp)
 
     ;;---------------------------------------------------------
     
