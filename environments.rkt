@@ -18,11 +18,11 @@
 (define init-env 
   (lambda ()
     (extend-env 
-     'i (num-val 1)
+     'x (num-val 1)
      (extend-env
-      'v (num-val 5)
+      'y (num-val 2)
       (extend-env
-       'x (num-val 10)
+       'z (num-val 3)
        (empty-env))))))
 
 ;;;;;;;;;;;;;;;; environment constructors and observers ;;;;;;;;;;;;;;;;
