@@ -98,11 +98,17 @@
 
       (stack-peek-exp (exp1)
                 (let ((stack (expval->stack (value-of exp1 env))))
-                  (if (empty? stack) (begin (display "Warning: Stack is empty. Cannot peek.\n") (num-val 2813))
+                  (if (eq? stack '()) (begin (display "Warning: Stack is empty. Cannot peek.\n") (num-val 2813))
                   (num-val (car stack)))))
 
       (stack-push-multi-exp (stack exps)
                 (stack-val (push-multi-helper (expval->stack (value-of stack env)) exps env)))
+
+      (stack-merge-exp (stack1 stack2)
+                       (let ((s1 (expval->stack (value-of stack1 env)))
+                             (s2 (expval->stack (value-of stack2 env))))
+                         (stack-val (append (reverse-list s2) s1))))
+                         
 
       ))) 
   
@@ -120,6 +126,11 @@
                                  (append (list (expval->num (value-of (car exps) env))) stack)
                                  (cdr exps)
                                  env))))
+
+; stack-merge helper
+(define reverse-list (lambda (lst) (if (eq? lst '())
+                                       '()
+                                       (append (reverse-list (cdr lst)) (list (car lst))))))
 
 ;;-----------------------------------------
 
