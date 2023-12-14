@@ -81,10 +81,12 @@
       ;;-------------------------------------------------
 
       (stack-exp ()
-                 '())
+                 (stack-val '()))
 
       (stack-push-exp (stack exp)
-                      (append list(value-of exp env) stack))
+                      (let ((val1 (expval->stack stack))
+                            (val2 (expval->num (value-of exp env))))
+                      (stack-val (append list(val2) val1))))
 
       (stack-pop-exp (stack) (if (null? stack) (begin
         (display "Warning: Stack is empty. Cannot pop element.\n")'())

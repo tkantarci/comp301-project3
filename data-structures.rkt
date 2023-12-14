@@ -24,6 +24,9 @@
   ;       it here as an expressed value.
   ;;---------------------------
 
+  (stack-val
+  (stack (list-of number?)))
+
   ;;---------------------------
   )
 
@@ -62,6 +65,11 @@
 ;       to the queue expression.
 ;;-----------------------------------
 
+(define expval->stack
+  (lambda (v)
+	(cases expval v
+  	(list-val (lst) lst)
+  	(else (expval-extractor-error 'num v)))))
 
 ;;-----------------------------------
 
