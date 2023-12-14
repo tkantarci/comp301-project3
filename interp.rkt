@@ -84,9 +84,9 @@
                  (stack-val '()))
 
       (stack-push-exp (stack exp)
-                      (let ((val1 (expval->stack stack))
+                      (let ((val1 (expval->stack (value-of stack env)))
                             (val2 (expval->num (value-of exp env))))
-                      (stack-val (append list(val2) val1))))
+                      (stack-val (append (list val2) val1))))
 
       (stack-pop-exp (stack) (if (null? stack) (begin
         (display "Warning: Stack is empty. Cannot pop element.\n")'())
