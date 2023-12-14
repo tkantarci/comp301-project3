@@ -78,6 +78,9 @@
       ; INSERT YOUR CODE HERE
       ; Write the required expressions starting from here
 
+      (stack-peek-exp (exp1)
+                      (let ((stack (expval->list (value-of exp1 env))))
+                        (num-val (car stack))))
       ;;-------------------------------------------------
 
       (stack-exp ()
