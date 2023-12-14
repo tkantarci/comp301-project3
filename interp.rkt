@@ -77,19 +77,21 @@
       ;;----------------------------------------------------
       ; INSERT YOUR CODE HERE
       ; Write the required expressions starting from here
+
+      ;;-------------------------------------------------
+
       (stack-exp ()
                  '())
 
       (stack-push-exp (stack exp)
                       (append list(value-of exp env) stack))
-      
-      (stack-peek-exp (exp1)
-                      (let ((stack (expval->list (value-of exp1 env))))
-                        (if (empty? stack) (num-val 2813)
-                        (num-val (car stack)))))
-      ;;-------------------------------------------------
-      
-      )))
+
+      (stack-pop-exp (stack) (if (null? stack) (begin
+        (display "Warning: Stack is empty. Cannot pop element.\n")'())
+                     (cdr stack)))
+      ))) 
+  
+
 
 ;;-----------------------------------------
 ; INSERT YOUR CODE HERE
