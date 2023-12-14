@@ -93,8 +93,8 @@
                      (cdr stack)))
 
       (stack-peek-exp (exp1)
-                (let ((stack (expval->list (value-of exp1 env))))
-                  (if (empty? stack) (num-val 2813)
+                (let ((stack (expval->stack (value-of exp1 env))))
+                  (if (empty? stack) (begin (display "Warning: Stack is empty. Cannot peek.\n") (num-val 2813))
                   (num-val (car stack)))))
       ))) 
   
