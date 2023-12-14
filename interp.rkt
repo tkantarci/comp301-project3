@@ -100,6 +100,10 @@
                 (let ((stack (expval->stack (value-of exp1 env))))
                   (if (empty? stack) (begin (display "Warning: Stack is empty. Cannot peek.\n") (num-val 2813))
                   (num-val (car stack)))))
+
+      (stack-push-multi-exp (stack exps)
+                (stack-val (push-multi-helper (expval->stack (value-of stack env)) exps env)))
+
       ))) 
   
 
@@ -109,6 +113,13 @@
 ; you may use this area to define helper functions
 ;;-----------------------------------------
 
+(define push-multi-helper (lambda (stack exps env)
+                            (if (null? exps)
+                                stack
+                                (push-multi-helper
+                                 (append (list (expval->num (value-of (car exps) env))) stack)
+                                 (cdr exps)
+                                 env))))
 
 ;;-----------------------------------------
 
