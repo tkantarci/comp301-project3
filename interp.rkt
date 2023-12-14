@@ -79,6 +79,12 @@
       ; Write the required expressions starting from here
 
       ;;-------------------------------------------------
+
+      (stack-exp ()
+                 '())
+
+      (stack-push-exp (stack exp)
+                      (append list(value-of exp env) stack))
       
       )))
 
