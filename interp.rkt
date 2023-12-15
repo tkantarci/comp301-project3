@@ -104,6 +104,12 @@
       (stack-push-multi-exp (stack exps)
                 (stack-val (push-multi-helper (expval->stack (value-of stack env)) exps env)))
 
+      (stack-pop-multi-exp (stack n)
+                           (stack-val (remove-from-stack-helper
+                                       (expval->stack (value-of stack env))
+                                       (expval->num (value-of n env)))))
+
+
       (stack-merge-exp (stack1 stack2)
                        (let ((s1 (expval->stack (value-of stack1 env)))
                              (s2 (expval->stack (value-of stack2 env))))
@@ -131,6 +137,19 @@
 (define reverse-list (lambda (lst) (if (eq? lst '())
                                        '()
                                        (append (reverse-list (cdr lst)) (list (car lst))))))
+
+(define (remove-from-stack-helper stack n)
+  (if (< (custom-length stack) n)
+      (begin (display "Warning: Stack length smaller than specified number.\n")  '())
+      (if (or (null? stack) (= n 0))
+          stack
+          (remove-from-stack-helper (cdr stack) (- n 1)))))
+
+
+(define (custom-length lst)
+    (if (null? lst)
+        0
+        (+ 1 (custom-length (cdr lst)))))
 
 ;;-----------------------------------------
 
