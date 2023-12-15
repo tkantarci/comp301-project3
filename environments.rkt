@@ -18,7 +18,7 @@
 (define init-env 
   (lambda ()
     (extend-env 
-     'x (num-val 1)
+     'x (num-val 10)
      (extend-env
       'y (num-val 2)
       (extend-env
